@@ -1,0 +1,19 @@
+.alert-light {
+    color: #1b1e21;
+    background-color: #fbfbfb;
+    border-color: #eaeaea;
+}
+
+#style-3::-webkit-scrollbar-track {
+    background-color: none;
+}
+
+#style-3::-webkit-scrollbar {
+    width: 6px;
+    background-color: none;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #c1c1c1;
+}

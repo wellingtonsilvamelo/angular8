@@ -1,0 +1,21 @@
+<!-- <pre class="card card-block card-header">Model: {{asyncSelected | json}}</pre>
+
+<input [(ngModel)]="asyncSelected" [typeahead]="dataSource" (typeaheadLoading)="changeTypeaheadLoading($event)" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionsLimit]="7" typeaheadOptionField="dsThesauro" placeholder="Locations loaded with timeout"
+    class="form-control">
+<div *ngIf="typeaheadLoading">Loading</div>
+<input type="text" (keyup)='keyUp.next($event)'>
+
+<span *ngFor="let item of list" [ngModel]="dsThesauro">{{ xy }}</span> -->
+<input [(ngModel)]="asyncSelected" #typehead [name]="name" class="form-control" (keyup)='keyUp.next($event)'>
+
+<div style="position: absolute; min-width: 100%;" #dropdown jurClickOutside>
+    <div class="list-group" *ngIf="list.length > 0">
+        <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let item of list" (click)="onItemSelected(item)">
+            <div class="d-flex w-100 justify-content-between">
+                <p class="lead" [innerHtml]="item.dsThesauro"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div>Texto</div>
+<pre>{{ selectedItem | json }}</pre>

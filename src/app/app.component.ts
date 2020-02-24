@@ -65,4 +65,8 @@ export class AppComponent implements OnInit {
     this.qualquer = event.text;
   }
 
+  onItemSelected(event: any): void {
+    this.list.push(event.item);
+  }
+
 }

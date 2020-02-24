@@ -53,7 +53,7 @@ export class JurTypeheadCustomComponent implements OnInit, OnDestroy {
   }
 
   onClickOutside(event: any) {
-    if (event.isClickedOutside) {
+    if (this.list.length > 0) {
       this.list = [];
     }
   }

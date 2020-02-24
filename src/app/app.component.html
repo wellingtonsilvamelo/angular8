@@ -6,7 +6,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword4">Password</label>
-            <app-jur-typehead-custom></app-jur-typehead-custom>
+            <app-jur-typehead-custom (itemEmitter)="onItemSelected($event)"></app-jur-typehead-custom>
         </div>
     </div>
     <div class="form-group">
@@ -44,3 +44,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
+{{ list | json}}

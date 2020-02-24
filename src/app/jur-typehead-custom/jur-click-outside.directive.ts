@@ -6,14 +6,14 @@ import { Directive, ElementRef, HostListener, Renderer2, Output, EventEmitter } 
 })
 export class JurClickOutsideDirective {
 
-  @Output() clickOutsideEmittter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() jurClickOutside: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
 
   @HostListener('document:click', ['$event.target']) onClick(targetElement) {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
-      this.clickOutsideEmittter.emit({ isClickedOutside : true});
+      this.jurClickOutside.emit({ isClickedOutside : true});
     }
   }
 

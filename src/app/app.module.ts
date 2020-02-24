@@ -19,6 +19,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ClickOutsideDirective } from './jur-typehead/click-outside.directive';
 import { JurTypeheadCustomComponent } from './jur-typehead-custom/jur-typehead-custom.component';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { JurTypeheadCustomComponent } from './jur-typehead-custom/jur-typehead-c
     NgbModule,
     NgbModalModule,
     TypeaheadModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ClickOutsideModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { map, debounceTime, distinctUntilChanged, switchMap, catchError, pluck } from 'rxjs/operators';
-import { Subject, Subscription, of, from } from 'rxjs';
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2, Output, EventEmitter } from '@angular/core';
+import { Subject, Subscription, of, Observable, from } from 'rxjs';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2, Output, EventEmitter, Input } from '@angular/core';
 import { CarroService } from '../shared/carro.service';
 
 @Component({
@@ -14,6 +14,9 @@ export class JurTypeheadCustomComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   @ViewChild('typehead', {static: false}) typehead: ElementRef;
   @Output() itemEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Input() bindLabel = '';
+  @Input() minLengthTyped = 2;
+  @Input() debounceTime = 400;
 
   list: any[] = [];
 
@@ -22,12 +25,12 @@ export class JurTypeheadCustomComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.keyUp.pipe(
       map(event => (event.target as HTMLInputElement).value.trim()),
-      debounceTime(400),
+      debounceTime(this.debounceTime),
       distinctUntilChanged(),
       switchMap(term =>  {
         if (term.length === 0) {
           return of([]);
-        } else if (term.length < 3) {
+        } else if (term.length < this.minLengthTyped) {
           return from([]);
         }
         return this.carroService.search(term).pipe(
@@ -35,7 +38,7 @@ export class JurTypeheadCustomComponent implements OnInit, OnDestroy {
           catchError(() => {
             return of([]);
           }));
-        })
+      })
     ).subscribe(res => {
       this.list = res;
     });

@@ -1,16 +1,8 @@
 <input #typehead class="form-control" (keyup)='keyUp.next($event)'>
 
-<!-- <div style="position: absolute; max-width: 300px; min-width: 10rem;" #dropdown (clickOutside)="onClickOutside($event)">
-    <div class="list-group" *ngIf="list.length > 0">
-        <div class="list-group-item list-group-item-action flex-column align-items-start" 
-        *ngFor="let item of list" (click)="onItemSelected(item)">
-            <div class="d-flex w-100 justify-content-between">
-                <a class="dropdown-item" [innerHtml]="item.dsThesauro"></a>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="dropdown-menu" style="display: block; font-size: 12px;" *ngIf="list.length > 0" #dropdown (clickOutside)="onClickOutside($event)">
-    <a class="dropdown-item" *ngFor="let item of list" (click)="onItemSelected(item)" [innerHtml]="item.dsThesauro" style="cursor: pointer;"></a>
+    <a class="dropdown-item" *ngFor="let item of list" (click)="onItemSelected(item)" style="cursor: pointer;">
+        <span [innerHtml]="item[bindLabel]" *ngIf="bindLabel !== ''"></span>
+        <span [innerHtml]="item" *ngIf="bindLabel === ''"></span>
+    </a>
 </div>

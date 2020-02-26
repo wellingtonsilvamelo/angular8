@@ -19,6 +19,7 @@ export class JurTypeheadCustomComponent implements OnInit, OnDestroy {
   @Input() debounceTime = 400;
 
   list: any[] = [];
+  partialString = '';
 
   constructor(private carroService: CarroService, private renderer: Renderer2) {}
 
@@ -33,6 +34,7 @@ export class JurTypeheadCustomComponent implements OnInit, OnDestroy {
         } else if (term.length < this.minLengthTyped) {
           return from([]);
         }
+        this.partialString = term;
         return this.carroService.search(term).pipe(
           pluck('body'),
           catchError(() => {

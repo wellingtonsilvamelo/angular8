@@ -2,7 +2,9 @@
 
 <div class="dropdown-menu" style="display: block; font-size: 12px;" *ngIf="list.length > 0" #dropdown (clickOutside)="onClickOutside($event)">
     <a class="dropdown-item" *ngFor="let item of list" (click)="onItemSelected(item)" style="cursor: pointer;">
-        <span [innerHtml]="item[bindLabel]" *ngIf="bindLabel !== ''"></span>
-        <span [innerHtml]="item" *ngIf="bindLabel === ''"></span>
+        <span *ngIf="bindLabel !== ''" [innerHtml]="item[bindLabel] | highlight: partialString">
+        </span>
+        <span *ngIf="bindLabel === ''" [innerHtml]="item | highlight: partialString">
+        </span>
     </a>
 </div>

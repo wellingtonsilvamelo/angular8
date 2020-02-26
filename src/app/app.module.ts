@@ -1,4 +1,4 @@
-import { HighlightPipe } from './jur-typehead-custom/highlight.pipe';
+import { JurTypeheadCustomModule } from './jur-typehead-custom/jur-typehead-custom.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -31,10 +31,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
     JurTypeheadComponent,
     FundoAmareloDirective,
     HighlightMouseDirective,
-    NgElseDirective,
-    ClickOutsideDirective,
-    JurTypeheadCustomComponent,
-    HighlightPipe
+    NgElseDirective
   ],
   imports: [
     BrowserModule,
@@ -49,10 +46,9 @@ import { ClickOutsideModule } from 'ng-click-outside';
     NgbModalModule,
     TypeaheadModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ClickOutsideModule
+    JurTypeheadCustomModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  exports: [ HighlightPipe ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

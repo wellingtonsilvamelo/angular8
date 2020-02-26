@@ -9,7 +9,7 @@ export class HighlightPipe implements PipeTransform {
 
     const indexPartial = value.toUpperCase().search(partial.toUpperCase());
     const partialResult = value.substring(indexPartial, indexPartial + partial.length);
-    const result = value.replace(partialResult, `<mark style="padding: 0;background-color: #dcdcdc;">${partialResult}</mark>`);
+    const result = value.replace(partialResult, `<mark>${partialResult}</mark>`);
     return result;
   }
 

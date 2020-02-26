@@ -14,6 +14,6 @@ p {
     margin-bottom: 0rem;
 }
 
-.list-group-item {
+.dropdown-item {
     cursor: pointer;
 }
